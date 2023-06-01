@@ -23,7 +23,44 @@ def home():
         source_language = ''
         translated_text = text
         # Use the Translator translate function
+        
+def GetLanguage(text):
+    # Default language is English
+    language = 'en'
+        
+        
+    # Use the Translator detect function
+    path = '/detect'
+    url = translator_endpoint + path
 
+# Build the request
+    params = {
+    'api-version': '3.0'
+    }
+
+    headers = {
+   'Ocp-Apim-Subscription-Key': cog_key,
+   'Ocp-Apim-Subscription-Region': cog_region,
+   'Content-type': 'application/json'
+   }
+
+   body = [{
+    'text': text
+   }]
+
+# Send the request and get response
+   request = requests.post(url, params=params, headers=headers, json=body)
+   response = request.json()
+
+# Parse JSON array and get language
+  language = response[0]["language"]
+
+
+
+
+    # Return the language
+   return language
+        
 def Translate(text, source_language):
     translation = ''
 
