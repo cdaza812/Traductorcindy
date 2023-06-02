@@ -22,13 +22,13 @@ def home():
     if request.method == 'POST':
         text = request.form['text']
          source_language = ''
-         translated_text = text
+         translated_text = traslate(text, source:language)
         # Aquí es donde procesarías el texto. Por ahora, solo devolvemos el mismo texto.
-       
+  
         translation = Translate(text, source_language=source_language)
-        return translation
-        Languaje = GetLanguage(text)
-        return language
+       # return translation
+       # Languaje = GetLanguage(text)
+       # return language
         # Use the Translator translate function
         return render_template('home.html', translated_text=translated_text,lang_detected=source_language)
     
