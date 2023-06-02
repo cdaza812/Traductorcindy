@@ -29,7 +29,7 @@ def home():
 
         # return language
         # Use the Translator translate function
-     return render_template('home.html', translated_text=translation,lang_detected=source_language)
+        return render_template('home.html', translated_text=translation,lang_detected=source_language)
 
     return render_template('home.html')
 
