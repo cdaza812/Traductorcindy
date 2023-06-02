@@ -20,17 +20,16 @@ app.config['CORS_ALLOWED_ORIGINS'] = '*'
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        text = request.form['text']
-         source_language = ''
-         translated_text = traslate(text, source:language)
+        text = request.form['text'] #quiere traducir
+        source_language = GetLanguage(text) #original
+        language_final = request.form['language']#final
         # Aquí es donde procesarías el texto. Por ahora, solo devolvemos el mismo texto.
-  
-        translation = Translate(text, source_language=source_language)
+        translation = Translate(text, source_language=source_language,language_final)
        # return translation
-       # Languaje = GetLanguage(text)
+       
        # return language
         # Use the Translator translate function
-        return render_template('home.html', translated_text=translated_text,lang_detected=source_language)
+        return render_template('home.html', translated_text=translation,lang_detected=source_language)
     
     return render_template('home.html')
 
@@ -68,7 +67,7 @@ def home():
     return language
 
 
-def Translate(text, source_language):
+def Translate(text, source_language,target):
     translation = ''
 
     path = '/translate'
@@ -78,7 +77,7 @@ def Translate(text, source_language):
     params = {
         'api-version': '3.0',
         'from': source_language,
-        'to': ['en']
+        'to': [target]
     }
 
     headers = {
