@@ -15,6 +15,8 @@ except Exception as ex:
 
 app = Flask(__name__)
 
+app.config['CORS_ALLOWED_ORIGINS'] = '*'
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
