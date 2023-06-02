@@ -25,15 +25,15 @@ def home():
         language_final = request.form['language']#final
         # Aquí es donde procesarías el texto. Por ahora, solo devolvemos el mismo texto.
         translation = Translate(text, source_language=source_language,language_final)
-       # return translation
-       
-       # return language
+        # return translation
+
+        # return language
         # Use the Translator translate function
-        return render_template('home.html', translated_text=translation,lang_detected=source_language)
-    
+     return render_template('home.html', translated_text=translation,lang_detected=source_language)
+
     return render_template('home.html')
 
- def GetLanguage(text):
+def GetLanguage(text):
     # Default language is English
     language = 'en'
 
