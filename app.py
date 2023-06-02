@@ -22,9 +22,12 @@ def home():
     if request.method == 'POST':
         text = request.form['text']
         # Aquí es donde procesarías el texto. Por ahora, solo devolvemos el mismo texto.
-        source_language = ''
-        translated_text = text
+        translated_text = translator.translate(text, source_language=source_language)
+        return translated_text
+        #source_language = ''
+        #translated_text = text
         # Use the Translator translate function
+
         
 def GetLanguage(text):
     # Default language is English
@@ -56,8 +59,6 @@ def GetLanguage(text):
 
 # Parse JSON array and get language
   language = response[0]["language"]
-
-
 
 
     # Return the language
